@@ -1,9 +1,11 @@
-import './App.css'
 import Global from './styles/global'
 import styled from "styled-components"
+import Grid from './Components/Grid'
+import Form from './Components/Form'
+
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import Form from './Components/Form'
+
 
 const Container = styled.div`
   width: 100%;
@@ -23,6 +25,7 @@ function App() {
     <>
       <Container>
         <Form />
+        <Grid/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <Global />
