@@ -18,6 +18,7 @@ const Container = styled.div`
   gap: 10px;
 `;
 
+
 const Title = styled.h2``;
 
 function App() {
@@ -27,17 +28,21 @@ function App() {
   const getUsers = async () => {
     try{
       const res = await axios.get("http://localhost:8800");
-      setUsers(res.data.sort((a, b) => (a.name > b.name ? 1:-1)));
-    } catch(error){
+      setUsers(res.data.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    } catch (error){
       toast.error(error);
     }
   }
+
+  useEffect(() => {
+    getUsers();
+  }, [setUsers]);
 
   return (
     <>
       <Container>
         <Form />
-        <Grid/>
+        <Grid users={users}/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <Global />
