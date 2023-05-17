@@ -32,18 +32,20 @@ export const updateUser = (req, res) => {
   const q = "UPDATE users SET 'name' = ?, 'email' = ?, 'phone' = ?, 'brith_date' = ? WHERE 'id' = ?";
   
 const values = [
-    req.body.nome,
+    req.body.name,
     req.body.email,
-    req.body.fone,
-    req.body.data_nascimento,
+    req.body.phone,
+    req.body.brith_date,
   ];
+
   db.query(q, [...values, req.params.id], (err) => {
     if (err) return res.json(err);
 
     return res.status(200).json("User updated successfully");
   });
+};
 
-  export const deleteUser = (req, res) => {
+export const deleteUser = (req, res) => {
     const q = "DELETE FROM usuarios WHERE `id` = ?";
   
     db.query(q, [req.params.id], (err) => {
@@ -52,4 +54,4 @@ const values = [
       return res.status(200).json("Usuário deletado com sucesso.");
     });
   };
-}
+
