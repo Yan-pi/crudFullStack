@@ -36,7 +36,11 @@ const Button = styled.button`
   border: none;
   background-color: #2c73d2;
   color: white;
-  height: 42px;
+  height: 42px; 
+  &:hover {
+    color: darkblue;
+    background-color: lightblue;
+  }
 `;
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
@@ -101,7 +105,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
   return (
     <FormContainer ref={ref} onSubmit={handleSubmit}>
       <InputArea>
-        <Label>Nome</Label>
+        <Label>Name</Label>
         <Input name="nome" />
       </InputArea>
       <InputArea>
@@ -109,15 +113,15 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
         <Input name="email" type="email" />
       </InputArea>
       <InputArea>
-        <Label>Telefone</Label>
+        <Label>Phone</Label>
         <Input name="fone" />
       </InputArea>
       <InputArea>
-        <Label>Data de Nascimento</Label>
+        <Label>Birth Date</Label>
         <Input name="data_nascimento" type="date" />
       </InputArea>
 
-      <Button type="submit">SALVAR</Button>
+      <Button type="submit">Submit</Button>
     </FormContainer>
   );
 };

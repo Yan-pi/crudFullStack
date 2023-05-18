@@ -64,9 +64,9 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
     <Table>
       <Thead>
         <Tr>
-          <Th>Nome</Th>
+          <Th>Name</Th>
           <Th>Email</Th>
-          <Th onlyWeb>Fone</Th>
+          <Th onlyWeb>Phone</Th>
           <Th></Th>
           <Th></Th>
         </Tr>
