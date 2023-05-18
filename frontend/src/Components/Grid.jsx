@@ -35,10 +35,9 @@ export const Th = styled.th`
 export const Td = styled.td`
   padding-top: 15px;
   text-align: ${(props) => (props.alignCenter ? "center" : "start")};
-  width: ${(props) => {
-    props.width ? props.width : "auto";
-  }};
-
+  width: ${(props) => {props.width ? props.width : "auto"}};
+  
+  
   @media (max-width: 500px) {
     ${(props) => props.onlyWeb && "display: none;"}
   }
@@ -51,7 +50,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:8800/${id}`)
+      .delete("http://localhost:8800/" + id)
       .then(({ data }) => {
         const newArray = users.filter((user) => user.id !== id);
 
@@ -62,16 +61,16 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
     setOnEdit(null);
   };
-
+  
   return (
     <Table>
       <Thead>
         <Tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th onlyWeb>Phone</th>
-          <th></th>
-          <th></th>
+          <Th>Name</Th>
+          <Th>Email</Th>
+          <Th onlyWeb>Phone</Th>
+          <Th></Th>
+          <Th></Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -80,13 +79,13 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
             <Td width="30%">{item.name}</Td>
             <Td width="30%">{item.email}</Td>
             <Td width="20%" onlyWeb>
-              {item.phone}
+            {item.phone}
             </Td>
             <Td alingCenteter width="5%">
-              <FaEdit onClick={() => handleEdit(item.id)} />
+                <FaEdit onClick={() => handleEdit(item)} />
             </Td>
             <Td alingCenteter width="5%">
-              <FaTrash onClick={() => handleDelete(item.id)} />
+                <FaTrash onClick={() => handleDelete(item.id)} />
             </Td>
           </Tr>
         ))}

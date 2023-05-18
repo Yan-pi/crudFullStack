@@ -1,6 +1,6 @@
-import { useRef, useEffect } from "react";
+import axios from "axios";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import axios from "axios"
 import { toast } from "react-toastify";
 
 const FormContainer = styled.form`
@@ -38,11 +38,11 @@ const Button = styled.button`
   height: 42px;
 `;
 
-const Form = ({ getUsers ,onEdit, setOnEdit }) => {
+const Form = ({ getUsers, onEdit, setOnEdit }) => {
   const ref = useRef();
 
-  useEffect(()=> {
-    if (onEdit){
+  useEffect(() => {
+    if (onEdit) {
       const user = ref.current;
 
       user.name.value = onEdit.name;
@@ -50,42 +50,44 @@ const Form = ({ getUsers ,onEdit, setOnEdit }) => {
       user.phone.value = onEdit.phone;
       user.brith_date.value = onEdit.brith_date;
     }
-  }, [onEdit])
+  }, [onEdit]);
 
-  const handleSubmit = async (e) =>{
-    e.preventDefalt
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const user = ref.current;
-    if(
+
+    if (
       !user.name.value ||
       !user.email.value ||
       !user.phone.value ||
-      !user.brith_date.value 
-    ){
-      return toast.warn("fill all fields")
+      !user.brith_date.value
+    ) {
+      return toast.warn("Preencha todos os campos!");
     }
 
-    if (onEdit){
+    if (onEdit) {
       await axios
-      .put("https://localhost:8800" + onEdit.id, {
-        name: user.name.value,
-        email: user.email.value,
-        phone: user.phone.value,
-        brith_date: user.brith_date.value,
-      })
-      .then(({ data }) => toast.success(data))
-      .catch(({ data }) => toast.error(data));
+        .put("http://localhost:8800/" + onEdit.id, {
+          name: user.name.value,
+          email: user.email.value,
+          phone: user.phone.value,
+          brith_date: user.brith_date.value,
+        })
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
     } else {
       await axios
-      .post("https://localhost:8800",{
-        name: user.name.value,
-        email: user.email.value,
-        phone: user.phone.value,
-        brith_date: user.brith_date.value,
-      })
-      .then(({ data }) => toast.success(data))
-      .catch(({ data }) => toast.error(data));
+        .post("http://localhost:8800", {
+          name: user.name.value,
+          email: user.email.value,
+          phone: user.phone.value,
+          brith_date: user.brith_date.value,
+        })
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
     }
+
     user.name.value = "";
     user.email.value = "";
     user.phone.value = "";
@@ -94,12 +96,12 @@ const Form = ({ getUsers ,onEdit, setOnEdit }) => {
     setOnEdit(null);
     getUsers();
   };
-  ;
+
 
   return (
     <FormContainer ref={ref} onSubmit={handleSubmit}>
       <InputArea>
-        <Label>Nome</Label>
+        <Label>Name</Label>
         <Input name="name" />
       </InputArea>
       <InputArea>
