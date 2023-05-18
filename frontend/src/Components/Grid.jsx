@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
@@ -5,7 +6,6 @@ import { toast } from "react-toastify";
 
 const Table = styled.table`
   width: 100%;
-  text-align: left;
   background-color: #fff;
   padding: 20px;
   box-shadow: 0px 0px 5px #ccc;
@@ -22,24 +22,22 @@ export const Tbody = styled.tbody``;
 export const Tr = styled.tr``;
 
 export const Th = styled.th`
-  text-align: left;
-  justify-content: left;
+  text-align: start;
   border-bottom: inset;
   padding-bottom: 5px;
 
   @media (max-width: 500px) {
-    ${(props) => props.onlyWeb && "display: none;"}
+    ${(props) => props.onlyWeb && "display: none"}
   }
 `;
 
 export const Td = styled.td`
   padding-top: 15px;
   text-align: ${(props) => (props.alignCenter ? "center" : "start")};
-  width: ${(props) => {props.width ? props.width : "auto"}};
-  
-  
+  width: ${(props) => (props.width ? props.width : "auto")};
+
   @media (max-width: 500px) {
-    ${(props) => props.onlyWeb && "display: none;"}
+    ${(props) => props.onlyWeb && "display: none"}
   }
 `;
 
@@ -61,14 +59,14 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
     setOnEdit(null);
   };
-  
+
   return (
     <Table>
       <Thead>
         <Tr>
-          <Th>Name</Th>
+          <Th>Nome</Th>
           <Th>Email</Th>
-          <Th onlyWeb>Phone</Th>
+          <Th onlyWeb>Fone</Th>
           <Th></Th>
           <Th></Th>
         </Tr>
@@ -76,16 +74,16 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
       <Tbody>
         {users.map((item, i) => (
           <Tr key={i}>
-            <Td width="30%">{item.name}</Td>
+            <Td width="30%">{item.nome}</Td>
             <Td width="30%">{item.email}</Td>
             <Td width="20%" onlyWeb>
-            {item.phone}
+              {item.fone}
             </Td>
-            <Td alingCenteter width="5%">
-                <FaEdit onClick={() => handleEdit(item)} />
+            <Td alignCenter width="5%">
+              <FaEdit onClick={() => handleEdit(item)} />
             </Td>
-            <Td alingCenteter width="5%">
-                <FaTrash onClick={() => handleDelete(item.id)} />
+            <Td alignCenter width="5%">
+              <FaTrash onClick={() => handleDelete(item.id)} />
             </Td>
           </Tr>
         ))}
