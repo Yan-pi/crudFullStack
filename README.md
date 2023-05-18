@@ -49,11 +49,11 @@ To install and set up the project locally, follow these steps:
 3. Install the dependencies for both the back-end and front-end:
 
    ```shell
-   cd server && npm install
+   cd api && npm install
    ```
 
    ```shell
-   cd client && npm install
+   cd frontend && npm install
    ```
 
 4. Configure the MySQL database:
@@ -61,6 +61,8 @@ To install and set up the project locally, follow these steps:
    - Create a new database and note down the connection details (host, port, username, password).
 
    - Update the database configuration in the `server/.env` file.
+   - ![image](https://github.com/Yan-pi/crudFullStack/assets/102800044/c5102324-3670-4724-b171-3d118219da99)
+
 
 5. Start the back-end server:
 
@@ -84,13 +86,13 @@ To use the application, follow these steps:
 
 2. You will see a user interface where you can perform CRUD operations on user data.
 
-   - To **create** a new user, click on the "Create User" button and fill in the required information.
+   - To **create** a new user, fill the required information on the forms and click on "Submit".
 
-   - To **read** user data, the existing users will be displayed in a table. You can search, sort, and filter the data as needed.
+   - To **read** user data, the existing users will be displayed in a table. 
 
-   - To **update** a user's information, click on the "Edit" button corresponding to the user in the table and make the necessary changes.
+   - To **update** a user's information, click on the "Edit" icon corresponding to the user in the table and make the necessary changes.
 
-   - To **delete** a user, click on the "Delete" button corresponding to the user in the table.
+   - To **delete** a user, click on the "Delete" icon corresponding to the user in the table.
 
 3. The application will provide notifications using react-toastify to display success messages, error messages, etc.
 
