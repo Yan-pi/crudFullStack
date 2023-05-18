@@ -90,9 +90,9 @@ To use the application, follow these steps:
 
    - To **read** user data, the existing users will be displayed in a table. 
 
-   - To **update** a user's information, click on the "Edit" button corresponding to the user in the table and make the necessary changes.
+   - To **update** a user's information, click on the "Edit" icon corresponding to the user in the table and make the necessary changes.
 
-   - To **delete** a user, click on the "Delete" button corresponding to the user in the table.
+   - To **delete** a user, click on the "Delete" icon corresponding to the user in the table.
 
 3. The application will provide notifications using react-toastify to display success messages, error messages, etc.
 
