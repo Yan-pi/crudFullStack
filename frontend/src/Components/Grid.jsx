@@ -43,16 +43,34 @@ export const Td = styled.td`
   }
 `;
 
-const Grid = ({ users, setUser, setOnEdit }) => {
+const Grid = ({ users, setUsers, setOnEdit }) => {
+  const handleEdit = (item) => {
+    setOnEdit(item);
+  };
+
+  const handleDelete = async (id) => {
+    await axios
+      .delete("http://localhost:8800/" + id)
+      .then(({ data }) => {
+        const newArray = users.filter((user) => user.id !== id);
+
+        setUsers(newArray);
+        toast.success(data);
+      })
+      .catch(({ data }) => toast.error(data));
+
+    setOnEdit(null);
+  };
+  
   return (
     <Table>
       <Thead>
         <Tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th onlyWeb>Phone</th>
-          <th></th>
-          <th></th>
+          <Th>Name</Th>
+          <Th>Email</Th>
+          <Th onlyWeb>Phone</Th>
+          <Th></Th>
+          <Th></Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -64,10 +82,10 @@ const Grid = ({ users, setUser, setOnEdit }) => {
             {item.phone}
             </Td>
             <Td alingCenteter width="5%">
-                <FaEdit  />
+                <FaEdit onClick={() => handleEdit(item)} />
             </Td>
             <Td alingCenteter width="5%">
-                <FaTrash />
+                <FaTrash onClick={() => handleDelete(item.id)} />
             </Td>
           </Tr>
         ))}
