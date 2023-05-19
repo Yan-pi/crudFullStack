@@ -67,13 +67,13 @@ To install and set up the project locally, follow these steps:
 5. Start the back-end server:
 
    ```shell
-   cd server && npm start
+   cd api && npm start
    ```
 
 6. Start the front-end development server:
 
    ```shell
-   cd client && npm run dev
+   cd frontend && npm run dev
    ```
 
 7. Access the application by visiting `http://localhost:3000` in your web browser.
