@@ -13,6 +13,8 @@ On this page, you can interact with a database to **Create, Read, Update, Delete
 - [Contributing](#contributing)
 - [License](#license)
 
+![chrome-capture-2023-4-23](https://github.com/Yan-pi/crudFullStack/assets/102800044/7b835fc6-cb05-45f6-9396-5072c4936ab1)
+
 ## Description
 
 This project is a FullStack CRUD application that allows you to perform basic Create, Read, Update, and Delete operations on user data. The application is built using a MySQL database for storing the data, while the back-end is implemented using Node.js and Express. The front-end is developed with React, utilizing "create vite@latest" as the project setup tool. The user interface is enhanced with styled-components for styling, axios for handling HTTP requests, and react-toastify for displaying notifications.
